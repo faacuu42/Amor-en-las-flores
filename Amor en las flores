@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flores de Lilium Flotantes</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: #f0f8ff;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif; /* Usando Arial como fuente */
+            text-align: center;
+        }
+
+        h1 {
+            position: absolute;
+            font-size: 1.5em;
+            color: black;
+            z-index: 100;
+            margin: 0;
+        }
+
+        /* Estilos para los lirios más pequeños */
+        .lilium {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: float 8s infinite;
+        }
+
+        /* Los pétalos de los lirios - alargados, más pequeños y de color rosa */
+        .lilium .petalo {
+            position: absolute;
+            width: 15px; /* Reducido el ancho */
+            height: 40px; /* Reducido la altura */
+            background-color: #ff69b4; /* Color rosa */
+            border-radius: 50%;
+            box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3); /* Sombra para dar un toque de dibujo */
+        }
+
+        /* Distribución de los pétalos de lilium */
+        .lilium .petalo:nth-child(1) {
+            transform: rotate(0deg);
+            width: 18px;
+            height: 45px;
+        }
+        .lilium .petalo:nth-child(2) {
+            transform: rotate(60deg);
+            width: 18px;
+            height: 45px;
+        }
+        .lilium .petalo:nth-child(3) {
+            transform: rotate(120deg);
+            width: 18px;
+            height: 45px;
+        }
+        .lilium .petalo:nth-child(4) {
+            transform: rotate(180deg);
+            width: 18px;
+            height: 45px;
+        }
+        .lilium .petalo:nth-child(5) {
+            transform: rotate(240deg);
+            width: 18px;
+            height: 45px;
+        }
+        .lilium .petalo:nth-child(6) {
+            transform: rotate(300deg);
+            width: 18px;
+            height: 45px;
+        }
+
+        /* El centro del lilium - blanco */
+        .centro {
+            position: absolute;
+            width: 8px; /* Reducido el tamaño */
+            height: 8px; /* Reducido el tamaño */
+            background-color: white; /* Cambiado a blanco */
+            border-radius: 50%;
+            box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes float {
+            0% { 
+                transform: translateY(100vh) rotate(0deg); /* Flores empiezan desde más abajo */
+            }
+            100% { 
+                transform: translateY(-100vh) rotate(720deg); /* Movimiento hacia arriba */
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>QUE NUNCA TE FALTEN FLORES</h1>
+
+    <script>
+        // Función para crear flores de lilium flotantes más pequeñas (rosas con centro blanco)
+        function crearLilium() {
+            const lilium = document.createElement('div');
+            lilium.classList.add('lilium');
+            lilium.style.left = Math.random() * window.innerWidth + 'px'; // Posición aleatoria horizontal
+            lilium.style.animationDuration = Math.random() * 5 + 5 + 's'; // Duración aleatoria para cada lilium
+
+            // Crear los pétalos rosas de los lirios (más pequeños)
+            for (let i = 0; i < 6; i++) {
+                const petalo = document.createElement('div');
+                petalo.classList.add('petalo');
+                lilium.appendChild(petalo);
+            }
+
+            // Crear el centro blanco
+            const centro = document.createElement('div');
+            centro.classList.add('centro');
+            lilium.appendChild(centro);
+
+            document.body.appendChild(lilium);
+
+            // Eliminar el lilium después de que termina la animación
+            setTimeout(() => {
+                lilium.remove();
+            }, 10000); // Elimina el lilium después de 10 segundos
+        }
+
+        // Crear lirios más pequeños en mayor cantidad cada 100ms
+        setInterval(crearLilium, 100); // Ahora los lirios se crean cada 100ms
+    </script>
+
+</body>
+</html>
